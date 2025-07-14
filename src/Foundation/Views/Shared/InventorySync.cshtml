@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/_CustomLayout.cshtml";
+    var importStatus = TempData["Status"]?.ToString();
+}
+
+<h2 style="margin-left:30px">Inventory Order Status</h2>
+<hr />
+
+@if (!string.IsNullOrEmpty(importStatus))
+{
+    <p style="margin-left:30px; color: green;"><strong>Status:</strong> @importStatus</p>
+}
+
+<form method="post" enctype="multipart/form-data" action="/InventorySync/ImportExcel" style="margin-left: 30px; margin-top: 20px;">
+    <div style="margin-bottom: 15px;">
+        <label for="excelFile">Upload Excel File:</label>
+        <input type="file" name="excelFile" accept=".xlsx" required />
+    </div>
+
+    <button type="submit" class="epi-cmsButton-text epi-cmsButton-tools epi-cmsButton-Import">Upload and Inv Sync</button>
+</form>

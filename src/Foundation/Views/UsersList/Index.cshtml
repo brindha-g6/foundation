@@ -1,0 +1,91 @@
+﻿@using EPiServer.Commerce.Order
+@using EPiServer.Shell.Web.Mvc.Html
+@using Foundation.Features.MyAccount.UsersList
+
+@model UsersListViewModel
+
+@{
+    Layout = "~/Features/MyAccount/_MyAccountLayout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+
+<div class="subscription-section">
+    <div class="page-title">
+        <h2>@Html.PropertyFor(x => x.CurrentContent.Name)</h2>
+    </div>
+    @if (Model.User.Any())
+    {
+        <table class="table table-sm table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>UserName</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.User)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        @if (user.Email == "test@example.com")
+                        {
+                            <td class="btn-wrapper">
+                                <button type="button" class="btn btn-sm btn-primary" onclick="approveUser('@user.Email')">Approve</button>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="rejectUser('@user.Email')">Reject</button>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <script>
+                  function getRequestVerificationToken() {
+                const tokenField = document.querySelector('input[name="__RequestVerificationToken"]');
+                return tokenField ? tokenField.value : '';
+            }
+
+            function approveUser(email) {
+                var btnList = document.getElementsByClassName("btn-wrapper");
+                for (var btn of btnList) {
+                    btn.style.display = 'none';
+                }
+                sendRoleChangeRequest('/myaccount/user-role/approve', email);
+            }
+
+            function rejectUser(email) {
+                var btnList = document.getElementsByClassName("btn-wrapper");
+                for (var btn of btnList) {
+                    btn.style.display = 'none';
+                }
+                sendRoleChangeRequest('/myaccount/user-role/rejectt', email);
+            }
+
+            function sendRoleChangeRequest(endpoint, email) {
+                if (!email) return;
+
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'RequestVerificationToken': getRequestVerificationToken()
+                    },
+                    body: new URLSearchParams({ email: email })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Operation successful!");
+                        @* location.reload(); *@
+                    } else {
+                        return response.text().then(msg => { throw new Error(msg); });
+                    }
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                });
+            }
+        </script>
+    }
+</div>
