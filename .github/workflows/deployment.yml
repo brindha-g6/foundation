@@ -1,0 +1,41 @@
+#stage-1 Build and download the artifact
+name: Build Only and Download Artifact
+
+on:
+  workflow_dispatch:  
+
+env:
+  PROJECT_NAME: foundation
+  ARTIFACT_NAME: foundation.zip
+  BUILD_PATH: ./build-output
+
+jobs:
+  build:
+    runs-on: windows-latest
+    name: Build the application and upload artifact
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Restore NuGet packages
+      run: dotnet restore Foundation.sln
+
+    - name: Build Solution
+      run: dotnet build Foundation.sln --configuration Release --output ${{ env.BUILD_PATH }}
+
+    - name: Zip Build Artifacts
+      run: |
+        Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath "${{ env.ARTIFACT_NAME }}"
+      shell: pwsh
+
+    - name: Upload Artifact for Manual Review
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: ${{ env.ARTIFACT_NAME }}
