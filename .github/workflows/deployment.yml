@@ -23,7 +23,7 @@ jobs:
         run: dotnet restore
 
       - name: Build solution
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build Foundation.sln --configuration Release --output ${{ env.BUILD_PATH }} /p:EnableDefaultContentItems=false
 
       - name: Publish app
         run: dotnet publish -c Release -o ${{ env.ARTIFACT_NAME }}
