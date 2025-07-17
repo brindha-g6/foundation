@@ -23,7 +23,7 @@ jobs:
         run: dotnet restore
 
       - name: Build solution
-        run: dotnet build Foundation.sln --configuration Release --output ${{ env.BUILD_PATH }} /p:EnableDefaultContentItems=false
+        run: dotnet build Foundation.sln --configuration Release /p:EnableDefaultContentItems=false
 
       - name: Publish app
         run: dotnet publish -c Release -o ${{ env.ARTIFACT_NAME }}
@@ -88,4 +88,10 @@ jobs:
             Write-Host "Deployment Status: $status"
           } while ($status -ne "Completed" -and $status -ne "Failed")
 
-          if ($status -eq "Comp
+          if ($status -eq "Completed") {
+            Write-Host "Deployment succeeded!"
+          } else {
+            Write-Error "Deployment failed!"
+            exit 1
+          }
+        shell: pwsh
