@@ -10,6 +10,8 @@ env:
 jobs:
   build:
     runs-on: windows-latest
+    outputs:
+      zip_name: ${{ steps.set-zip-name.outputs.zip_name }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,35 +31,38 @@ jobs:
         run: dotnet publish Foundation.sln -c Release -o ${{ env.ARTIFACT_NAME }} /p:EnableDefaultContentItems=false /p:ExcludeContentFiles=true
 
       - name: Create ZIP
+        id: set-zip-name
         run: |
           $date = Get-Date -Format "yyyyMMdd"
           $zipName = "foundation.cms.app.$date.zip"
           Compress-Archive -Path "${{ env.ARTIFACT_NAME }}\*" -DestinationPath $zipName
-          echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
+          echo "zip_name=$zipName" >> $env:GITHUB_OUTPUT
         shell: pwsh
 
-      - name: Upload Artifact for Manual Review
+      - name: Upload ZIP artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: ${{ env.ARTIFACT_NAME }}
+          name: ${{ steps.set-zip-name.outputs.zip_name }}
+          path: ${{ steps.set-zip-name.outputs.zip_name }}
 
   deploy:
     needs: build
     runs-on: windows-latest
+    env:
+      ZIP_NAME: ${{ needs.build.outputs.zip_name }}
     steps:
-      - name: Download built artifact
+      - name: Download ZIP artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.ARTIFACT_NAME }}
+          name: ${{ env.ZIP_NAME }}
+          path: .
 
       - name: Set PowerShell Execution Policy
         run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
         shell: pwsh
 
       - name: Install EPiCloud PowerShell Module
-        run: |
-          Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
+        run: Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
         shell: pwsh
 
       - name: Deploy ZIP to Optimizely DXP
@@ -68,19 +73,21 @@ jobs:
 
           Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
 
-          $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
-          Write-Host "Uploading $($zipFile.FullName)"
+          $zipName = $env:ZIP_NAME
+          if (-not (Test-Path -Path $zipName)) {
+            Write-Error "ZIP file not found: $zipName"
+            exit 1
+          }
 
+          Write-Host "Uploading $zipName"
           $sasUri = Get-EpiDeploymentPackageLocation -ProjectId $projectId
+          Invoke-RestMethod -Uri $sasUri -Method PUT -InFile $zipName -Headers @{ "x-ms-blob-type" = "BlockBlob" }
 
-          Invoke-RestMethod -Uri $sasUri -Method PUT -InFile $zipFile.FullName -Headers @{ "x-ms-blob-type" = "BlockBlob" }
-
-          $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
+          $deployment = Start-EpiDeployment -DeploymentPackage $zipName -TargetEnvironment Integration -DirectDeploy
           $deploymentId = $deployment.Id
           Write-Host "Deployment started with ID: $deploymentId"
 
           # Poll for deployment completion
-          $status = ''
           do {
             Start-Sleep -Seconds 30
             $current = Get-EpiDeployment -Id $deploymentId
