@@ -1,73 +1,70 @@
 name: Build and Deploy to Optimizely DXP
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - staging
 
 env:
-  ARTIFACT_NAME: foundation.cms.app.${{ github.run_id }}
-  DOTNET_VERSION: '6.0.x'
+  DOTNET_VERSION: 6.0.x
+  BUILD_PATH: build
+  ARTIFACT_NAME: foundation.cms.app
 
 jobs:
   build:
+    name: Build .NET Solution
     runs-on: windows-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore dependencies
-        run: dotnet restore
+      - name: Restore NuGet packages
+        run: dotnet restore Foundation.sln
 
       - name: Build solution
-        run: dotnet build Foundation.sln --configuration Release /p:EnableDefaultContentItems=false
-
-      - name: Publish app
-        run: dotnet publish Foundation.sln -c Release -o ${{ env.ARTIFACT_NAME }} /p:EnableDefaultContentItems=false /p:ExcludeContentFiles=true
+        run: dotnet build Foundation.sln --configuration Release --output ${{ env.BUILD_PATH }} /p:EnableDefaultContentItems=false
 
       - name: Create ZIP
         run: |
-          $date = Get-Date -Format "yyyyMMdd"
-          $zipName = "foundation.cms.app.$date.zip"
-          Compress-Archive -Path "${{ env.ARTIFACT_NAME }}\*" -DestinationPath $zipName
+          $date = Get-Date -Format "yyyyMMddHHmmss"
+          $zipName = "${{ env.ARTIFACT_NAME }}.$date.zip"
+          Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath $zipName
           echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
         shell: pwsh
 
-      - name: Upload Artifact for Manual Review
+      - name: Upload ZIP Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: ${{ env.ARTIFACT_NAME }}
+          name: deploy-zip
+          path: foundation.cms.app.*.zip
 
   deploy:
-    needs: build
+    name: Deploy to Optimizely DXP
     runs-on: windows-latest
+    needs: build
+
     steps:
-      - name: Download built artifact
+      - name: Download ZIP Artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.ARTIFACT_NAME }}
+          name: deploy-zip
 
-      - name: Set PowerShell Execution Policy
-        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+      - name: Deploy to DXP
         shell: pwsh
-
-      - name: Install EPiCloud PowerShell Module
-        run: |
-          Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
-        shell: pwsh
-
-      - name: Deploy ZIP to Optimizely DXP
         run: |
           $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
           $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
           $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
-
+          
           Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
-
+          
           $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
           if (-not $zipFile) {
             Write-Error "ZIP file not found."
@@ -81,5 +78,4 @@ jobs:
           $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
           $deploymentId = $deployment.Id
           Write-Host "Deployment started with ID: $deploymentId"
-          Write-Host "✅ Please monitor deployment status in the Optimizely DXP Portal manually."
-        shell: pwsh
+          Write-Host "Please monitor deployment status in the Optimizely DXP Portal manually."
