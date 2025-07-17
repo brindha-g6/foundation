@@ -26,7 +26,7 @@ jobs:
         run: dotnet build Foundation.sln --configuration Release /p:EnableDefaultContentItems=false
 
       - name: Publish app
-        run: dotnet publish -c Release -o ${{ env.ARTIFACT_NAME }}
+        run: dotnet publish Foundation.sln -c Release -o ${{ env.ARTIFACT_NAME }} /p:EnableDefaultContentItems=false /p:ExcludeContentFiles=true
 
       - name: Create ZIP
         run: |
