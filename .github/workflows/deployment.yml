@@ -59,25 +59,32 @@ jobs:
       - name: Deploy to DXP
         shell: pwsh
         run: |
+          # Install and import EPiCloud module
           Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass 
+          Import-Module EPiCloud
+          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
           $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
           $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
           $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
-          
+
+          # Connect to DXP
           Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
-          
+
+          # Locate the ZIP package
           $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
           if (-not $zipFile) {
-            Write-Error "ZIP file not found."
+            Write-Error "Deployment package not found."
             exit 1
           }
 
-          Write-Host "Uploading $($zipFile.FullName)"
+          # Upload and deploy
+          Write-Host "Uploading $($zipFile.FullName) to DXP..."
           $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId -BlobName $zipFile.Name
           Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
 
           $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
           $deploymentId = $deployment.Id
+
           Write-Host "Deployment started with ID: $deploymentId"
-          Write-Host "Please monitor deployment status in the Optimizely DXP Portal manually."
+          
