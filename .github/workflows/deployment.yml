@@ -1,0 +1,90 @@
+name: Build and Deploy to Optimizely DXP
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+
+env:
+  DOTNET_VERSION: 6.0.x
+  BUILD_PATH: build
+  ARTIFACT_NAME: foundation.cms.app
+
+jobs:
+  build:
+    name: Build .NET Solution
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore NuGet packages
+        run: dotnet restore Foundation.sln
+
+      - name: Build solution
+        run: dotnet build Foundation.sln --configuration Release --output ${{ env.BUILD_PATH }} /p:EnableDefaultContentItems=false
+
+      - name: Create ZIP
+        run: |
+          $date = Get-Date -Format "yyyyMMddHHmmss"
+          $zipName = "${{ env.ARTIFACT_NAME }}.$date.zip"
+          Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath $zipName
+          echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
+        shell: pwsh
+
+      - name: Upload ZIP Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-zip
+          path: foundation.cms.app.*.zip
+
+  deploy:
+    name: Deploy to Optimizely DXP
+    runs-on: windows-latest
+    needs: build
+
+    steps:
+      - name: Download ZIP Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deploy-zip
+
+      - name: Deploy to DXP
+        shell: pwsh
+        run: |
+          # Install and import EPiCloud module
+          Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
+          Import-Module EPiCloud
+          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+          $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
+          $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
+          $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
+
+          # Connect to DXP
+          Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
+
+          # Locate the ZIP package
+          $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
+          if (-not $zipFile) {
+            Write-Error "Deployment package not found."
+            exit 1
+          }
+
+          # Upload and deploy
+          Write-Host "Uploading $($zipFile.FullName) to DXP..."
+          $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
+          Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
+
+          $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
+          $deploymentId = $deployment.Id
+
+          Write-Host "Deployment started with ID: $deploymentId"
+          
