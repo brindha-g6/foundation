@@ -59,6 +59,8 @@ jobs:
       - name: Deploy to DXP
         shell: pwsh
         run: |
+          Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
+          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass 
           $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
           $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
           $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
