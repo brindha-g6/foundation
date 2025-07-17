@@ -74,8 +74,8 @@ jobs:
           }
 
           Write-Host "Uploading $($zipFile.FullName)"
-          $sasUri = Get-EpiDeploymentPackageLocation -ProjectId $projectId
-          Invoke-RestMethod -Uri $sasUri -Method PUT -InFile $zipFile.FullName -Headers @{ "x-ms-blob-type" = "BlockBlob" }
+          $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId -BlobName $zipFile.Name
+          Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
 
           $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
           $deploymentId = $deployment.Id
