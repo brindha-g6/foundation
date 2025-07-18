@@ -8,6 +8,7 @@
   <ItemGroup>
     <!-- Optimizely CMS and Commerce, with OIDC provider and other main packages -->
     <PackageReference Include="EPiServer.CloudPlatform.Cms" Version="1.7.2" />
+    <PackageReference Include="Episerver.CloudPlatform.Commerce" Version="1.2.0" />
     <PackageReference Include="EPiServer.CMS" Version="12.31.2" />
     <PackageReference Include="EPiServer.CMS.AspNetCore" Version="12.21.7" />
     <PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.21.7" />
