@@ -93,6 +93,9 @@
 	  <EmbeddedResource Include="lang\**\*" />
 	  <None Update="App_Data\**" CopyToOutputDirectory="PreserveNewest" />
 	  <None Update="modules\_protected\Foundation\**" CopyToOutputDirectory="PreserveNewest" />
+    <Content Update="Views\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
 	  <Compile Remove="Features\MultiShipment\**" />
 	  <Compile Remove="Infrastructure\Plugins\**" />
 	  <Content Remove="Features\MultiShipment\**" />
