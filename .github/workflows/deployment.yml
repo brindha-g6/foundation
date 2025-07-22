@@ -35,7 +35,7 @@ jobs:
 
       - name: Install node-sass + glob importer
         run: |
-          npm install node-sass node-sass-glob-importer
+          npm install node-sass node-sass-glob-importer bootstrap
 
       - name: Patch SCSS imports to remove ~
         run: |
