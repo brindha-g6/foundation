@@ -2,7 +2,6 @@ name: Build and Deploy to Optimizely DXP
 
 env:
   BUILD_PATH: ${{ github.workspace }}/build
-  ARTIFACT_NAME: foundation.cms.app
   USE_PUBLISH: true
 
 on:
@@ -26,6 +25,7 @@ jobs:
         run: dotnet restore
 
       - name: Write MSBuild override to exclude duplicate module.config
+        shell: pwsh
         run: |
           @"
           <Project>
@@ -37,22 +37,27 @@ jobs:
 
       - name: Publish project
         if: env.USE_PUBLISH == 'true'
+        shell: pwsh
         run: |
           $overridePath = Join-Path "${{ github.workspace }}" "ExcludeGetaConfig.targets"
           dotnet publish src/Foundation/Foundation.csproj `
             --configuration Release `
-            --output ${{ env.BUILD_PATH }} `
+            --output "${{ env.BUILD_PATH }}" `
             /p:CustomAfterMicrosoftCommonTargets=$overridePath
 
       - name: Zip the published output
+        shell: pwsh
         run: |
-          Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath "${{ env.ARTIFACT_NAME }}.zip"
+          $timestamp = Get-Date -Format "yyyyMMddHHmmss"
+          $zipName = "foundation.cms.app.$timestamp.zip"
+          Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath $zipName
+          echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Upload zipped artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: ${{ env.ARTIFACT_NAME }}.zip
+          name: foundation-cms-zip
+          path: ${{ env.ZIP_NAME }}
 
   deploy:
     runs-on: windows-latest
@@ -61,7 +66,7 @@ jobs:
       - name: Download ZIP Artifact
         uses: actions/download-artifact@v4
         with:
-          name: foundation.cms.app
+          name: foundation-cms-zip
           path: .
 
       - name: Deploy to Optimizely DXP
@@ -77,7 +82,7 @@ jobs:
 
           Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
 
-          $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
+          $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app.*.zip" | Select-Object -First 1
           if (-not $zipFile) {
             Write-Error "Deployment package not found."
             exit 1
@@ -86,7 +91,6 @@ jobs:
           Write-Host "Found ZIP file: $($zipFile.FullName)"
           $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
 
-          # Upload and capture the blob name
           $uploadedName = Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
 
           if (-not $uploadedName) {
@@ -94,8 +98,7 @@ jobs:
             exit 1
           }
 
-          Write-Host "Successfully uploaded. Package name: $uploadedName"
+          Write-Host "Successfully uploaded: $uploadedName"
 
-          # Start deployment using the returned blob name
           $deployment = Start-EpiDeployment -DeploymentPackage $uploadedName -TargetEnvironment Integration -DirectDeploy
           Write-Host "Deployment started with ID: $($deployment.Id)"
