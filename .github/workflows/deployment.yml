@@ -37,6 +37,12 @@ jobs:
         run: |
           npm install node-sass node-sass-glob-importer
 
+      - name: Patch SCSS imports to remove ~
+        run: |
+          Get-ChildItem -Path src/Foundation/wwwroot/scss -Recurse -Include *.scss | ForEach-Object {
+            (Get-Content $_.FullName) -replace '~', '' | Set-Content $_.FullName
+          }
+
       - name: Compile SCSS using node-sass with glob support
         run: |
           npx node-sass src/Foundation/wwwroot/scss/main.scss `
