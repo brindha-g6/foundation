@@ -10,6 +10,7 @@ env:
   DOTNET_VERSION: 6.0.x
   BUILD_PATH: build
   ARTIFACT_NAME: foundation.cms.app
+  USE_PUBLISH: true  # Change to 'false' to use build instead of publish
 
 jobs:
   build:
@@ -28,8 +29,22 @@ jobs:
       - name: Restore NuGet packages
         run: dotnet restore Foundation.sln
 
-      - name: Build solution
-        run: dotnet build Foundation.sln --configuration Release --output ${{ env.BUILD_PATH }} /p:EnableDefaultContentItems=false
+      - name: Build or Publish Solution
+        run: |
+          if ($env:USE_PUBLISH -eq 'true') {
+            echo "Running dotnet publish..."
+            dotnet publish Foundation.sln --configuration Release --output "${{ env.BUILD_PATH }}"
+          } else {
+            echo "Running dotnet build..."
+            dotnet build Foundation.sln --configuration Release --output "${{ env.BUILD_PATH }}"
+          }
+        shell: pwsh
+
+      - name: Confirm Build Output Contents
+        run: |
+          echo "Contents of '${{ env.BUILD_PATH }}':"
+          Get-ChildItem -Path "${{ env.BUILD_PATH }}" -Recurse | Select-Object FullName, Length
+        shell: pwsh
 
       - name: Create ZIP
         run: |
@@ -71,20 +86,16 @@ jobs:
           # Connect to DXP
           Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
 
-          # Locate the ZIP package
+          # Locate ZIP
           $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
           if (-not $zipFile) {
             Write-Error "Deployment package not found."
             exit 1
           }
 
-          # Upload and deploy
           Write-Host "Uploading $($zipFile.FullName) to DXP..."
           $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
           Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
 
           $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
-          $deploymentId = $deployment.Id
-
-          Write-Host "Deployment started with ID: $deploymentId"
-          
+          Write-Host "Deployment started with ID: $($deployment.Id)"
