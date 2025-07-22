@@ -70,7 +70,7 @@ jobs:
           "@
           $content | Set-Content -Path "ExcludeGetaConfig.targets"
 
-      - name: Publish project (Optional)
+      - name: Publish project
         if: env.USE_PUBLISH == 'true'
         run: |
           $overridePath = Join-Path "${{ github.workspace }}" "ExcludeGetaConfig.targets"
@@ -84,3 +84,35 @@ jobs:
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: ${{ env.BUILD_PATH }}
+
+  deploy:
+    name: Deploy to Optimizely DXP
+    runs-on: windows-latest
+    needs: build
+
+    steps:
+      - name: Download ZIP Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: foundation.cms.app
+
+      - name: Deploy to DXP
+        shell: pwsh
+        run: |
+          Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
+          Import-Module EPiCloud
+          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+          $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
+          $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
+          $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
+          Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
+          $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
+          if (-not $zipFile) {
+            Write-Error "Deployment package not found."
+            exit 1
+          }
+          Write-Host "Uploading $($zipFile.FullName) to DXP..."
+          $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
+          Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
+          $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
+          Write-Host "Deployment started with ID: $($deployment.Id)"
