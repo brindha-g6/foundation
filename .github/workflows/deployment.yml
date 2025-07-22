@@ -1,4 +1,4 @@
-name: Build and Deploy to Optimizely DXP
+name: Build and Package Site
 
 on:
   push:
@@ -6,103 +6,59 @@ on:
       - main
       - staging
 
-env:
-  DOTNET_VERSION: 6.0.x
-  BUILD_PATH: build
-  ARTIFACT_NAME: foundation.cms.app
-  USE_PUBLISH: true  # Change to 'false' to use build instead of publish
-
 jobs:
   build:
-    name: Build .NET Solution
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+
+    env:
+      DOTNET_VERSION: 6.0.x
+      BUILD_PATH: build
+      ARTIFACT_NAME: foundation.cms.app
+      USE_PUBLISH: true
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Install Node.js and Dart Sass
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install node-sass + glob importer
         run: |
-          npm install -g sass
+          npm install node-sass node-sass-glob-importer
 
-      - name: Compile SCSS to CSS
+      - name: Compile SCSS using node-sass with glob support
         run: |
-          New-Item -ItemType Directory -Force -Path src/Foundation/wwwroot/css
-          sass src/Foundation/wwwroot/scss/main.scss src/Foundation/wwwroot/css/main.min.css --style=compressed
-        shell: pwsh
+          npx node-sass src/Foundation/wwwroot/scss/main.scss `
+            --output src/Foundation/wwwroot/css `
+            --output-style compressed `
+            --importer node_modules/node-sass-glob-importer/dist/cli.js
 
-      - name: Restore NuGet packages
-        run: dotnet restore Foundation.sln
+      - name: Restore dependencies
+        run: dotnet restore
 
-      - name: Build or Publish Solution
+      - name: Build solution
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Publish project (Optional)
+        if: env.USE_PUBLISH == 'true'
         run: |
-          if ($env:USE_PUBLISH -eq 'true') {
-            echo "Running dotnet publish..."
-            dotnet publish Foundation.sln --configuration Release --output "${{ env.BUILD_PATH }}"
-          } else {
-            echo "Running dotnet build..."
-            dotnet build Foundation.sln --configuration Release --output "${{ env.BUILD_PATH }}"
-          }
-        shell: pwsh
+          dotnet publish src/Foundation/Foundation.csproj `
+            --configuration Release `
+            --output ${{ env.BUILD_PATH }}
 
-      - name: Confirm Build Output Contents
-        run: |
-          echo "Contents of '${{ env.BUILD_PATH }}':"
-          Get-ChildItem -Path "${{ env.BUILD_PATH }}" -Recurse | Select-Object FullName, Length
-        shell: pwsh
-
-      - name: Create ZIP
-        run: |
-          $date = Get-Date -Format "yyyyMMddHHmmss"
-          $zipName = "${{ env.ARTIFACT_NAME }}.$date.zip"
-          Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath $zipName
-          echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
-        shell: pwsh
-
-      - name: Upload ZIP Artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: deploy-zip
-          path: foundation.cms.app.*.zip
-
-  deploy:
-    name: Deploy to Optimizely DXP
-    runs-on: windows-latest
-    needs: build
-
-    steps:
-      - name: Download ZIP Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: deploy-zip
-
-      - name: Deploy to DXP
-        shell: pwsh
-        run: |
-          Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
-          Import-Module EPiCloud
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-
-          $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
-          $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
-          $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
-
-          Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
-
-          $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
-          if (-not $zipFile) {
-            Write-Error "Deployment package not found."
-            exit 1
-          }
-
-          Write-Host "Uploading $($zipFile.FullName) to DXP..."
-          $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
-          Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
-
-          $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
-          Write-Host "Deployment started with ID: $($deployment.Id)"
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.BUILD_PATH }}
