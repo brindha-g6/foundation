@@ -57,14 +57,26 @@ jobs:
       - name: Build solution
         run: dotnet build --no-restore --configuration Release
 
+      - name: Write MSBuild override to exclude duplicate module.config
+        run: |
+          $content = @"
+          <Project>
+            <Target Name='RemoveDuplicateGetaConfig' BeforeTargets='AssignTargetPaths'>
+              <ItemGroup>
+                <Content Remove='@(Content)' Condition=""'%(RelativeDir)%(Filename)%(Extension)' == 'modules\_protected\Geta.NotFoundHandler.Optimizely\module.config'"" />
+              </ItemGroup>
+            </Target>
+          </Project>
+          "@
+          $content | Set-Content -Path "ExcludeGetaConfig.targets"
+
       - name: Publish project (Optional)
         if: env.USE_PUBLISH == 'true'
         run: |
           dotnet publish src/Foundation/Foundation.csproj `
             --configuration Release `
             --output ${{ env.BUILD_PATH }} `
-            /p:ExcludeFilesFromPublish="modules\\_protected\\Geta.NotFoundHandler.Optimizely\\module.config"
-
+            /p:CustomAfterMicrosoftCommonTargets=ExcludeGetaConfig.targets
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
