@@ -42,7 +42,8 @@ jobs:
           npx node-sass src/Foundation/wwwroot/scss/main.scss `
             --output src/Foundation/wwwroot/css `
             --output-style compressed `
-            --importer node_modules/node-sass-glob-importer/dist/cli.js
+            --importer node_modules/node-sass-glob-importer/dist/cli.js `
+            --include-path node_modules
 
       - name: Restore dependencies
         run: dotnet restore
