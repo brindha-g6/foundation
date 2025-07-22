@@ -27,34 +27,32 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18'
 
-      - name: Install SCSS dependencies
+      - name: Install Gulp and dependencies
+        working-directory: src/Foundation/wwwroot/scss
         run: |
-          cd src/Foundation/wwwroot/scss
-          npm init -y
-          npm install node-sass node-sass-glob-importer
+          npm install --no-save gulp gulp-sass sass sass-glob
 
-      - name: Create SCSS compile script
+      - name: Create Gulpfile for SCSS compilation
+        working-directory: src/Foundation/wwwroot/scss
         run: |
-          cd src/Foundation/wwwroot/scss
-          echo "const sass = require('node-sass');" > compile.js
-          echo "const globImporter = require('node-sass-glob-importer');" >> compile.js
-          echo "sass.render({" >> compile.js
-          echo "  file: 'main.scss'," >> compile.js
-          echo "  importer: globImporter()," >> compile.js
-          echo "  outputStyle: 'compressed'," >> compile.js
-          echo "}, function(error, result) {" >> compile.js
-          echo "  if (!error) {" >> compile.js
-          echo "    const fs = require('fs');" >> compile.js
-          echo "    fs.writeFileSync('../css/main.min.css', result.css);" >> compile.js
-          echo "  } else { console.error(error); process.exit(1); }" >> compile.js
-          echo "});" >> compile.js
+          echo "const gulp = require('gulp');" > gulpfile.js
+          echo "const sass = require('gulp-sass')(require('sass'));" >> gulpfile.js
+          echo "const sassGlob = require('sass-glob');" >> gulpfile.js
+          echo "" >> gulpfile.js
+          echo "gulp.task('sass', function () {" >> gulpfile.js
+          echo "  return gulp.src('main.scss')" >> gulpfile.js
+          echo "    .pipe(sassGlob())" >> gulpfile.js
+          echo "    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))" >> gulpfile.js
+          echo "    .pipe(gulp.dest('../css'));" >> gulpfile.js
+          echo "});" >> gulpfile.js
+          echo "" >> gulpfile.js
+          echo "gulp.task('default', gulp.series('sass'));" >> gulpfile.js
 
-      - name: Compile SCSS with glob support
-        run: |
-          cd src/Foundation/wwwroot/scss
-          node compile.js
+      - name: Run Gulp to compile SCSS
+        working-directory: src/Foundation/wwwroot/scss
+        run: npx gulp
 
       - name: Write MSBuild override to exclude duplicate module.config
         shell: pwsh
@@ -62,7 +60,7 @@ jobs:
           @"
           <Project>
             <ItemGroup>
-              <Content Remove=\"modules\_protected\Geta.NotFoundHandler.Optimizely\module.config\" />
+              <Content Remove="modules\_protected\Geta.NotFoundHandler.Optimizely\module.config" />
             </ItemGroup>
           </Project>
           "@ | Out-File -FilePath "${{ github.workspace }}\ExcludeGetaConfig.targets" -Encoding utf8
