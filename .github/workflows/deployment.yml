@@ -26,6 +26,15 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: Install Node.js and Dart Sass
+        run: |
+          npm install -g sass
+
+      - name: Compile SCSS to CSS
+        run: |
+          sass .\wwwroot\ClientResources\scss\main.scss .\wwwroot\ClientResources\css\main.min.css --style=compressed
+        shell: pwsh
+
       - name: Restore NuGet packages
         run: dotnet restore Foundation.sln
 
@@ -74,7 +83,6 @@ jobs:
       - name: Deploy to DXP
         shell: pwsh
         run: |
-          # Install and import EPiCloud module
           Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
           Import-Module EPiCloud
           Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
@@ -83,10 +91,8 @@ jobs:
           $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
           $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
 
-          # Connect to DXP
           Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
 
-          # Locate ZIP
           $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
           if (-not $zipFile) {
             Write-Error "Deployment package not found."
