@@ -32,7 +32,8 @@ jobs:
 
       - name: Compile SCSS to CSS
         run: |
-          sass .\wwwroot\ClientResources\scss\main.scss .\wwwroot\ClientResources\css\main.min.css --style=compressed
+          New-Item -ItemType Directory -Force -Path src/Foundation/wwwroot/css
+          sass src/Foundation/wwwroot/scss/main.scss src/Foundation/wwwroot/css/main.min.css --style=compressed
         shell: pwsh
 
       - name: Restore NuGet packages
