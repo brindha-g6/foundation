@@ -62,7 +62,8 @@ jobs:
         run: |
           dotnet publish src/Foundation/Foundation.csproj `
             --configuration Release `
-            --output ${{ env.BUILD_PATH }}
+            --output ${{ env.BUILD_PATH }} `
+            /p:ExcludeFilesFromPublish="modules\_protected\Geta.NotFoundHandler.Optimizely\module.config"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
