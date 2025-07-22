@@ -21,24 +21,40 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Restore dependencies
+        run: dotnet restore
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install Node.js dependencies for SCSS with glob
+      - name: Install SCSS dependencies
         run: |
           cd src/Foundation/wwwroot/scss
           npm init -y
-          npm install sass sass-glob
+          npm install node-sass node-sass-glob-importer
 
-      - name: Compile SCSS to CSS with glob support
+      - name: Create SCSS compile script
         run: |
           cd src/Foundation/wwwroot/scss
-          npx sass --importer=node_modules/sass-glob/importer.js main.scss ../css/main.min.css --style=compressed
+          echo "const sass = require('node-sass');" > compile.js
+          echo "const globImporter = require('node-sass-glob-importer');" >> compile.js
+          echo "sass.render({" >> compile.js
+          echo "  file: 'main.scss'," >> compile.js
+          echo "  importer: globImporter()," >> compile.js
+          echo "  outputStyle: 'compressed'," >> compile.js
+          echo "}, function(error, result) {" >> compile.js
+          echo "  if (!error) {" >> compile.js
+          echo "    const fs = require('fs');" >> compile.js
+          echo "    fs.writeFileSync('../css/main.min.css', result.css);" >> compile.js
+          echo "  } else { console.error(error); process.exit(1); }" >> compile.js
+          echo "});" >> compile.js
 
-      - name: Restore .NET dependencies
-        run: dotnet restore
+      - name: Compile SCSS with glob support
+        run: |
+          cd src/Foundation/wwwroot/scss
+          node compile.js
 
       - name: Write MSBuild override to exclude duplicate module.config
         shell: pwsh
@@ -46,7 +62,7 @@ jobs:
           @"
           <Project>
             <ItemGroup>
-              <Content Remove="modules\_protected\Geta.NotFoundHandler.Optimizely\module.config" />
+              <Content Remove=\"modules\_protected\Geta.NotFoundHandler.Optimizely\module.config\" />
             </ItemGroup>
           </Project>
           "@ | Out-File -FilePath "${{ github.workspace }}\ExcludeGetaConfig.targets" -Encoding utf8
