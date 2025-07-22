@@ -83,11 +83,19 @@ jobs:
             exit 1
           }
 
-          Write-Host "Uploading $($zipFile.FullName) to DXP..."
+          Write-Host "Found ZIP file: $($zipFile.FullName)"
           $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
-                    
-          $uploadedName = Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
-          Write-Host "Package uploaded as $uploadedName"
 
+          # Upload and capture the blob name
+          $uploadedName = Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
+
+          if (-not $uploadedName) {
+            Write-Error "Upload failed. No package name returned."
+            exit 1
+          }
+
+          Write-Host "Successfully uploaded. Package name: $uploadedName"
+
+          # Start deployment using the returned blob name
           $deployment = Start-EpiDeployment -DeploymentPackage $uploadedName -TargetEnvironment Integration -DirectDeploy
           Write-Host "Deployment started with ID: $($deployment.Id)"
