@@ -63,7 +63,7 @@ jobs:
           <Project>
             <Target Name='RemoveDuplicateGetaConfig' BeforeTargets='AssignTargetPaths'>
               <ItemGroup>
-                <Content Remove='@(Content)' Condition=""'%(RelativeDir)%(Filename)%(Extension)' == 'modules\_protected\Geta.NotFoundHandler.Optimizely\module.config'"" />
+                <Content Remove="@(Content)" Condition="'%(RelativeDir)%(Filename)%(Extension)' == 'modules\_protected\Geta.NotFoundHandler.Optimizely\module.config'" />
               </ItemGroup>
             </Target>
           </Project>
