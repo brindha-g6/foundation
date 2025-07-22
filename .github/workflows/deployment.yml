@@ -64,11 +64,6 @@ jobs:
           name: foundation.cms.app
           path: .
 
-      - name: Install PowerShell 7 (pwsh)
-        uses: actions/setup-powershell@v2
-        with:
-          pwsh-version: '7.4.1'
-
       - name: Deploy to Optimizely DXP
         shell: pwsh
         run: |
