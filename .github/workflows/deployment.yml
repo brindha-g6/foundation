@@ -73,10 +73,11 @@ jobs:
       - name: Publish project (Optional)
         if: env.USE_PUBLISH == 'true'
         run: |
+          $overridePath = Join-Path "${{ github.workspace }}" "ExcludeGetaConfig.targets"
           dotnet publish src/Foundation/Foundation.csproj `
             --configuration Release `
             --output ${{ env.BUILD_PATH }} `
-            /p:CustomAfterMicrosoftCommonTargets=ExcludeGetaConfig.targets
+            /p:CustomAfterMicrosoftCommonTargets=$overridePath
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
