@@ -24,6 +24,14 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+      - name: Install Sass CLI
+        run: npm install -g sass
+
+      # 🔧 NEW: Compile SCSS to CSS
+      - name: Compile SCSS to CSS
+        run: |
+          sass src/Foundation/wwwroot/scss:src/Foundation/wwwroot/css --no-source-map --style=compressed
+
       - name: Write MSBuild override to exclude duplicate module.config
         shell: pwsh
         run: |
@@ -58,47 +66,3 @@ jobs:
         with:
           name: foundation-cms-zip
           path: ${{ env.ZIP_NAME }}
-
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    steps:
-      - name: Download ZIP Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: foundation-cms-zip
-          path: .
-
-      - name: Deploy to Optimizely DXP
-        shell: pwsh
-        run: |
-          Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
-          Import-Module EPiCloud
-          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-
-          $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
-          $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
-          $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
-
-          Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
-
-          $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app.*.zip" | Select-Object -First 1
-          if (-not $zipFile) {
-            Write-Error "Deployment package not found."
-            exit 1
-          }
-
-          Write-Host "Found ZIP file: $($zipFile.FullName)"
-          $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
-
-          $uploadedName = Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
-
-          if (-not $uploadedName) {
-            Write-Error "Upload failed. No package name returned."
-            exit 1
-          }
-
-          Write-Host "Successfully uploaded: $uploadedName"
-
-          $deployment = Start-EpiDeployment -DeploymentPackage $uploadedName -TargetEnvironment Integration -DirectDeploy
-          Write-Host "Deployment started with ID: $($deployment.Id)"
