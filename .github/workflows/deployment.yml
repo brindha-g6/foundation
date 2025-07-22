@@ -85,7 +85,9 @@ jobs:
 
           Write-Host "Uploading $($zipFile.FullName) to DXP..."
           $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
-          Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
+                    
+          $uploadedName = Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
+          Write-Host "Package uploaded as $uploadedName"
 
-          $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
+          $deployment = Start-EpiDeployment -DeploymentPackage $uploadedName -TargetEnvironment Integration -DirectDeploy
           Write-Host "Deployment started with ID: $($deployment.Id)"
