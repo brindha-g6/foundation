@@ -21,16 +21,24 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Install Sass CLI
-        run: npm install -g sass
-
-      # 🔧 NEW: Compile SCSS to CSS
-      - name: Compile SCSS to CSS
+      - name: Install Node.js dependencies for SCSS with glob
         run: |
-          sass src/Foundation/wwwroot/scss:src/Foundation/wwwroot/css --no-source-map --style=compressed
+          cd src/Foundation/wwwroot/scss
+          npm init -y
+          npm install sass sass-glob
+
+      - name: Compile SCSS to CSS with glob support
+        run: |
+          cd src/Foundation/wwwroot/scss
+          npx sass --importer=node_modules/sass-glob/importer.js main.scss ../css/main.min.css --style=compressed
+
+      - name: Restore .NET dependencies
+        run: dotnet restore
 
       - name: Write MSBuild override to exclude duplicate module.config
         shell: pwsh
