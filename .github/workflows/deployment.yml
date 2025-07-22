@@ -1,74 +1,39 @@
-name: Build and Package Site
+name: Build and Deploy to Optimizely DXP
+
+env:
+  BUILD_PATH: ${{ github.workspace }}/build
+  ARTIFACT_NAME: foundation.cms.app
+  USE_PUBLISH: true
 
 on:
   push:
     branches:
       - main
-      - staging
 
 jobs:
   build:
     runs-on: windows-latest
-    defaults:
-      run:
-        shell: pwsh
-
-    env:
-      DOTNET_VERSION: 6.0.x
-      BUILD_PATH: build
-      ARTIFACT_NAME: foundation.cms.app
-      USE_PUBLISH: true
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install node-sass + glob importer
-        run: |
-          npm install node-sass node-sass-glob-importer bootstrap
-
-      - name: Patch SCSS imports to remove ~
-        run: |
-          Get-ChildItem -Path src/Foundation/wwwroot/scss -Recurse -Include *.scss | ForEach-Object {
-            (Get-Content $_.FullName) -replace '~', '' | Set-Content $_.FullName
-          }
-
-      - name: Compile SCSS using node-sass with glob support
-        run: |
-          npx node-sass src/Foundation/wwwroot/scss/main.scss `
-            --output src/Foundation/wwwroot/css `
-            --output-style compressed `
-            --importer node_modules/node-sass-glob-importer/dist/cli.js `
-            --include-path node_modules
+          dotnet-version: '9.0.x'
 
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build solution
-        run: dotnet build --no-restore --configuration Release
-
       - name: Write MSBuild override to exclude duplicate module.config
         run: |
-          $content = @"
+          @"
           <Project>
-            <Target Name='RemoveDuplicateGetaConfig' BeforeTargets='AssignTargetPaths'>
-              <ItemGroup>
-                <Content Remove="@(Content)" Condition="'%(RelativeDir)%(Filename)%(Extension)' == 'modules\_protected\Geta.NotFoundHandler.Optimizely\module.config'" />
-              </ItemGroup>
-            </Target>
+            <ItemGroup>
+              <Content Remove="modules\_protected\Geta.NotFoundHandler.Optimizely\module.config" />
+            </ItemGroup>
           </Project>
-          "@
-          $content | Set-Content -Path "ExcludeGetaConfig.targets"
+          "@ | Out-File -FilePath "${{ github.workspace }}\ExcludeGetaConfig.targets" -Encoding utf8
 
       - name: Publish project
         if: env.USE_PUBLISH == 'true'
@@ -79,40 +44,53 @@ jobs:
             --output ${{ env.BUILD_PATH }} `
             /p:CustomAfterMicrosoftCommonTargets=$overridePath
 
-      - name: Upload artifact
+      - name: Zip the published output
+        run: |
+          Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath "${{ env.ARTIFACT_NAME }}.zip"
+
+      - name: Upload zipped artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ARTIFACT_NAME }}
-          path: ${{ env.BUILD_PATH }}
+          path: ${{ env.ARTIFACT_NAME }}.zip
 
   deploy:
-    name: Deploy to Optimizely DXP
     runs-on: windows-latest
     needs: build
-
     steps:
       - name: Download ZIP Artifact
         uses: actions/download-artifact@v4
         with:
           name: foundation.cms.app
+          path: .
 
-      - name: Deploy to DXP
+      - name: Install PowerShell 7 (pwsh)
+        uses: actions/setup-powershell@v2
+        with:
+          pwsh-version: '7.4.1'
+
+      - name: Deploy to Optimizely DXP
         shell: pwsh
         run: |
           Install-Module -Name EPiCloud -Force -Scope CurrentUser -AllowClobber
           Import-Module EPiCloud
           Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
           $clientKey = 'cHa5uGqiIBDGmIEtCycecyrZxktsUCNM0vjDqkk2vUrCLDtW'
           $clientSecret = 'NDm5kxcQ3dY4E1r3XEf7WDdK+ZOGZtcnxEpu0yoPsTu+Qtw1gWxqgcFpLLMwd45c'
           $projectId = '9e999a9a-6dac-47dc-9232-b2ed008f83ca'
+
           Connect-EpiCloud -ClientKey $clientKey -ClientSecret $clientSecret -ProjectId $projectId
+
           $zipFile = Get-ChildItem -Path . -Filter "foundation.cms.app*.zip" | Select-Object -First 1
           if (-not $zipFile) {
             Write-Error "Deployment package not found."
             exit 1
           }
+
           Write-Host "Uploading $($zipFile.FullName) to DXP..."
           $sasUrl = Get-EpiDeploymentPackageLocation -ProjectId $projectId
           Add-EpiDeploymentPackage -SasUrl $sasUrl -Path $zipFile.FullName
+
           $deployment = Start-EpiDeployment -DeploymentPackage $zipFile.Name -TargetEnvironment Integration -DirectDeploy
           Write-Host "Deployment started with ID: $($deployment.Id)"
