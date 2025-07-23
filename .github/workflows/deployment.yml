@@ -35,10 +35,12 @@ jobs:
           node-version: '18'
 
       - name: Install Node Dependencies
+        working-directory: src/Foundation
         run: npm install
         shell: pwsh
 
       - name: Build Frontend Assets using Webpack
+        working-directory: src/Foundation
         run: npm run prod
         shell: pwsh
 
