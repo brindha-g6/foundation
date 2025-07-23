@@ -1,90 +1,74 @@
 name: Build and Deploy to Optimizely DXP
 
-env:
-  BUILD_PATH: ${{ github.workspace }}/build
-  USE_PUBLISH: true
-
 on:
   push:
     branches:
       - main
+      - staging
+
+env:
+  DOTNET_VERSION: 6.0.x
+  BUILD_PATH: build
+  ARTIFACT_NAME: foundation.cms.app
+  USE_PUBLISH: true  # Change to 'false' to use build instead of publish
 
 jobs:
   build:
+    name: Build .NET Solution
     runs-on: windows-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore dependencies
-        run: dotnet restore
-
+      - name: Restore NuGet packages
+        run: dotnet restore Foundation.sln
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Install Gulp and dependencies
-        working-directory: src/Foundation/wwwroot/scss
-        run: |
-          npm install --no-save gulp gulp-sass sass sass-glob
-
-      - name: Create Gulpfile for SCSS compilation
-        working-directory: src/Foundation/wwwroot/scss
-        run: |
-          echo "const gulp = require('gulp');" > gulpfile.js
-          echo "const sass = require('gulp-sass')(require('sass'));" >> gulpfile.js
-          echo "const sassGlob = require('sass-glob');" >> gulpfile.js
-          echo "" >> gulpfile.js
-          echo "gulp.task('sass', function () {" >> gulpfile.js
-          echo "  return gulp.src('main.scss')" >> gulpfile.js
-          echo "    .pipe(sassGlob())" >> gulpfile.js
-          echo "    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))" >> gulpfile.js
-          echo "    .pipe(gulp.dest('../css'));" >> gulpfile.js
-          echo "});" >> gulpfile.js
-          echo "" >> gulpfile.js
-          echo "gulp.task('default', gulp.series('sass'));" >> gulpfile.js
-
-      - name: Run Gulp to compile SCSS
-        working-directory: src/Foundation/wwwroot/scss
-        run: npx gulp
-
-      - name: Write MSBuild override to exclude duplicate module.config
+      - name: Install Node Dependencies
+        run: npm install
         shell: pwsh
-        run: |
-          @"
-          <Project>
-            <ItemGroup>
-              <Content Remove="modules\_protected\Geta.NotFoundHandler.Optimizely\module.config" />
-            </ItemGroup>
-          </Project>
-          "@ | Out-File -FilePath "${{ github.workspace }}\ExcludeGetaConfig.targets" -Encoding utf8
 
-      - name: Publish project
-        if: env.USE_PUBLISH == 'true'
+      - name: Build Frontend Assets using Webpack
+        run: npm run prod
         shell: pwsh
-        run: |
-          $overridePath = Join-Path "${{ github.workspace }}" "ExcludeGetaConfig.targets"
-          dotnet publish src/Foundation/Foundation.csproj `
-            --configuration Release `
-            --output "${{ env.BUILD_PATH }}" `
-            /p:CustomAfterMicrosoftCommonTargets=$overridePath
 
-      - name: Zip the published output
-        shell: pwsh
+      - name: Build or Publish Solution
         run: |
-          $timestamp = Get-Date -Format "yyyyMMddHHmmss"
-          $zipName = "foundation.cms.app.$timestamp.zip"
+          if ($env:USE_PUBLISH -eq 'true') {
+            echo "Running dotnet publish..."
+            dotnet publish Foundation.sln --configuration Release --output "${{ env.BUILD_PATH }}"
+          } else {
+            echo "Running dotnet build..."
+            dotnet build Foundation.sln --configuration Release --output "${{ env.BUILD_PATH }}"
+          }
+        shell: pwsh
+
+      - name: Confirm Build Output Contents
+        run: |
+          echo "Contents of '${{ env.BUILD_PATH }}':"
+          Get-ChildItem -Path "${{ env.BUILD_PATH }}" -Recurse | Select-Object FullName, Length
+        shell: pwsh
+
+      - name: Create ZIP
+        run: |
+          $date = Get-Date -Format "yyyyMMddHHmmss"
+          $zipName = "${{ env.ARTIFACT_NAME }}.$date.zip"
           Compress-Archive -Path "${{ env.BUILD_PATH }}\*" -DestinationPath $zipName
           echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
+        shell: pwsh
 
-      - name: Upload zipped artifact
+      - name: Upload ZIP Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: foundation-cms-zip
-          path: ${{ env.ZIP_NAME }}
+          name: deploy-zip
+          path: foundation.cms.app.*.zip
