@@ -1,0 +1,2359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Catalogs Version="1.0">
+  <MetaDataScheme><MetaDataPlusBackup version="1.0"><MetaClass><Namespace>Mediachase.Commerce.Catalog.System</Namespace><Name>CatalogContent</Name><FriendlyName>Catalog Content</FriendlyName><MetaClassType>System</MetaClassType><ParentClass></ParentClass><TableName>Catalog</TableName><Description>Contains basic information about catalog contents</Description><IsSystem>True</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.System</Namespace><Name>CatalogEntry</Name><FriendlyName>Catalog Entry</FriendlyName><MetaClassType>System</MetaClassType><ParentClass></ParentClass><TableName>CatalogEntry</TableName><Description>CatalogEntry Class</Description><IsSystem>True</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>CatalogEntryEx</Name><FriendlyName>Default Catalog Entry</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogEntry</ParentClass><TableName>CatalogEntryEx</TableName><Description>Catalog Entry Extended Class</Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.System</Namespace><Name>CatalogNode</Name><FriendlyName>Catalog Node</FriendlyName><MetaClassType>System</MetaClassType><ParentClass></ParentClass><TableName>CatalogNode</TableName><Description>Contains basic information about catalog nodes</Description><IsSystem>True</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>CatalogNodeEx</Name><FriendlyName>Default Catalog Node</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogNode</ParentClass><TableName>CatalogNodeEx</TableName><Description>Catalog Node Extended Class</Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>DynamicProduct</Name><FriendlyName>Dynamic Product</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogEntry</ParentClass><TableName>CatalogEntryEx_DynamicProduct</TableName><Description>Dynamic product supports mutiple options</Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>DynamicVariant</Name><FriendlyName>Dynamic Variant</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogEntry</ParentClass><TableName>CatalogEntryEx_DynamicVariant</TableName><Description>Dynamic variant supports multiple options</Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>FashionBundle</Name><FriendlyName>Fashion Bundle</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogEntry</ParentClass><TableName>CatalogEntryEx_FashionBundle</TableName><Description>Displays a bundle, which is collection of individual fashion variants.</Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>GenericNode</Name><FriendlyName>Generic Node</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogNode</ParentClass><TableName>CatalogNodeEx_GenericNode</TableName><Description></Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>GenericPackage</Name><FriendlyName>Generic Package</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogEntry</ParentClass><TableName>CatalogEntryEx_GenericPackage</TableName><Description></Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>GenericProduct</Name><FriendlyName>Generic Product</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogEntry</ParentClass><TableName>CatalogEntryEx_GenericProduct</TableName><Description>Generic product supports mutiple products</Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaClass><Namespace>Mediachase.Commerce.Catalog.User</Namespace><Name>GenericVariant</Name><FriendlyName>Generic Variant</FriendlyName><MetaClassType>User</MetaClassType><ParentClass>CatalogEntry</ParentClass><TableName>CatalogEntryEx_GenericVariant</TableName><Description>Generic variant supports multiple variation types</Description><IsSystem>False</IsSystem><IsAbstract>False</IsAbstract><FieldListChangedSqlScript></FieldListChangedSqlScript><Tag></Tag><Attributes></Attributes></MetaClass><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>_ExcludedCatalogEntryMarkets</Name><FriendlyName>Catalog Entry Market Exclusions</FriendlyName><Description>Catalog Entry Market Exclusions</Description><DataType>EnumMultiValue</DataType><Length>4</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>CatalogEntryEx</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass><Dictionary>AUS</Dictionary><Dictionary>BRA</Dictionary><Dictionary>CAN</Dictionary><Dictionary>CHL</Dictionary><Dictionary>DEFAULT</Dictionary><Dictionary>DEU</Dictionary><Dictionary>ESP</Dictionary><Dictionary>FR</Dictionary><Dictionary>JPN</Dictionary><Dictionary>NLD</Dictionary><Dictionary>NOR</Dictionary><Dictionary>SAU</Dictionary><Dictionary>SWE</Dictionary><Dictionary>UK</Dictionary><Dictionary>US</Dictionary></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>AssociationsTitle</Name><FriendlyName>Associations title</FriendlyName><Description>This is title of the Associations tab.</Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Boost</Name><FriendlyName>Search Boost (1-5)</FriendlyName><Description>Boost product in search results with default sort</Description><DataType>Integer</DataType><Length>4</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Brand</Name><FriendlyName>Brand</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes><Attribute><Key>includeindefaultsearch</Key><Value>True</Value></Attribute><Attribute><Key>indexfield</Key><Value>tokenized</Value></Attribute></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Bury</Name><FriendlyName>Bury</FriendlyName><Description>This will determine whether or not to hide product in search results.</Description><DataType>Boolean</DataType><Length>1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Color</Name><FriendlyName>Color</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes><Attribute><Key>includeindefaultsearch</Key><Value>True</Value></Attribute><Attribute><Key>indexfield</Key><Value>tokenized</Value></Attribute></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ContentArea</Name><FriendlyName>Content area</FriendlyName><Description>This will display the content area.</Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Css</Name><FriendlyName>CSS</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>CssFiles</Name><FriendlyName>CSS files</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>DefaultTemplate</Name><FriendlyName>Default template</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Department</Name><FriendlyName>Department</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Description</Name><FriendlyName>Description</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes><Attribute><Key>includeindefaultsearch</Key><Value>True</Value></Attribute><Attribute><Key>indexfield</Key><Value>tokenized</Value></Attribute></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>DisplayName</Name><FriendlyName>Display Name</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>512</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes><Attribute><Key>includeindefaultsearch</Key><Value>True</Value></Attribute><Attribute><Key>indexfield</Key><Value>tokenized</Value></Attribute><Attribute><Key>useincomparing</Key><Value>True</Value></Attribute></Attributes><OwnerMetaClass>CatalogNodeEx</OwnerMetaClass><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Epi_IsPublished</Name><FriendlyName>Is published</FriendlyName><Description>Flag to indicate whether the content language is published or not.</Description><DataType>Boolean</DataType><Length>1</Length><AllowNulls>False</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>CatalogNodeEx</OwnerMetaClass><OwnerMetaClass>CatalogEntryEx</OwnerMetaClass><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Epi_StartPublish</Name><FriendlyName>Start publish date</FriendlyName><Description>Start publish date that indicate the content is available or not.</Description><DataType>DateTime</DataType><Length>8</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>CatalogNodeEx</OwnerMetaClass><OwnerMetaClass>CatalogEntryEx</OwnerMetaClass><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Epi_StopPublish</Name><FriendlyName>Stop publish date</FriendlyName><Description>Stop publish date that indicate the content is expired or not.</Description><DataType>DateTime</DataType><Length>8</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>CatalogNodeEx</OwnerMetaClass><OwnerMetaClass>CatalogEntryEx</OwnerMetaClass><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>FeaturedProducts</Name><FriendlyName>Featured products</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>HideSiteFooter</Name><FriendlyName>Hide site footer</FriendlyName><Description></Description><DataType>Boolean</DataType><Length>1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>HideSiteHeader</Name><FriendlyName>Hide site header</FriendlyName><Description></Description><DataType>Boolean</DataType><Length>1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>LegalDisclaimer</Name><FriendlyName>Legal disclaimer</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>LongDescription</Name><FriendlyName>Long description</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes><Attribute><Key>includeindefaultsearch</Key><Value>True</Value></Attribute><Attribute><Key>indexfield</Key><Value>tokenized</Value></Attribute></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>LongName</Name><FriendlyName>Long name</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Manufacturer</Name><FriendlyName>Manufacturer</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ManufacturerPartsWarrantyDescription</Name><FriendlyName>Manufacturer parts warranty description</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Model</Name><FriendlyName>Model</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ModelYear</Name><FriendlyName>Model year</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Mpn</Name><FriendlyName>Mpn</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>NewArrival</Name><FriendlyName>New arrival</FriendlyName><Description></Description><DataType>Boolean</DataType><Length>1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>OnSale</Name><FriendlyName>On sale</FriendlyName><Description></Description><DataType>Boolean</DataType><Length>1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>PackageQuantity</Name><FriendlyName>Package quantity</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>PartialPageSize</Name><FriendlyName>Partial page size</FriendlyName><Description></Description><DataType>Integer</DataType><Length>4</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>PartNumber</Name><FriendlyName>Part number</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ProductGroup</Name><FriendlyName>Product group</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ProductStatus</Name><FriendlyName>Product Status</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ProductTeaser</Name><FriendlyName>Product teaser</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ProductTypeName</Name><FriendlyName>Product type name</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ProductTypeSubcategory</Name><FriendlyName>Product type sub category</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>RegionCode</Name><FriendlyName>Region code</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ScriptFiles</Name><FriendlyName>Script files</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Scripts</Name><FriendlyName>Scripts</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>ShowRecommendations</Name><FriendlyName>Show recommendations</FriendlyName><Description>This will determine whether or not to show recommendations.</Description><DataType>Boolean</DataType><Length>1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>GenericPackage</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass><OwnerMetaClass>FashionBundle</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Size</Name><FriendlyName>Size</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes><Attribute><Key>includeindefaultsearch</Key><Value>True</Value></Attribute><Attribute><Key>indexfield</Key><Value>tokenized</Value></Attribute></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Sizing</Name><FriendlyName>Sizing</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>True</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes><Attribute><Key>includeindefaultsearch</Key><Value>True</Value></Attribute><Attribute><Key>indexfield</Key><Value>tokenized</Value></Attribute></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Sku</Name><FriendlyName>Sku</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>SubscriptionLength</Name><FriendlyName>Subscription length</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Teaser</Name><FriendlyName>Teaser</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>TopContentArea</Name><FriendlyName>Top content area</FriendlyName><Description></Description><DataType>LongHtmlString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>True</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericNode</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Upc</Name><FriendlyName>Upc</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>VariantOptions</Name><FriendlyName>Variant Options</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>VirtualProductMode</Name><FriendlyName>Virtual product mode</FriendlyName><Description></Description><DataType>LongString</DataType><Length>-1</Length><AllowNulls>False</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>VirtualProductRole</Name><FriendlyName>Virtual product role</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericVariant</OwnerMetaClass><OwnerMetaClass>DynamicVariant</OwnerMetaClass></MetaField><MetaField><Namespace>Mediachase.Commerce.Catalog</Namespace><Name>Warranty</Name><FriendlyName>Warranty</FriendlyName><Description></Description><DataType>ShortString</DataType><Length>4000</Length><AllowNulls>True</AllowNulls><SaveHistory>False</SaveHistory><AllowSearch>False</AllowSearch><MultiLanguageValue>False</MultiLanguageValue><IsSystem>False</IsSystem><Tag></Tag><Attributes></Attributes><OwnerMetaClass>GenericProduct</OwnerMetaClass><OwnerMetaClass>DynamicProduct</OwnerMetaClass></MetaField></MetaDataPlusBackup></MetaDataScheme>
+  <Dictionaries>
+    <Merchants />
+    <Packages />
+    <TaxCategories>
+      <TaxCategory>
+        <Name>General Sales</Name>
+      </TaxCategory>
+    </TaxCategories>
+    <Warehouses>
+      <Warehouse>
+        <Name>Abha</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Abha</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Guraiger</Line1>
+        <Line2 />
+        <City>Abha</City>
+        <State />
+        <CountryCode>SAU</CountryCode>
+        <CountryName>Saudi Arabia</CountryName>
+        <PostalCode>625529</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Amsterdam</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Amsterdam</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Stadhouderskade 78</Line1>
+        <Line2 />
+        <City>Amsterdam</City>
+        <State />
+        <CountryCode>NLD</CountryCode>
+        <CountryName>Netherlands</CountryName>
+        <PostalCode>1072</PostalCode>
+        <RegionCode>AE</RegionCode>
+        <RegionName>AE</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Barcelona</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Barcelona</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Carrer de Sant Quintí, 89,</Line1>
+        <Line2 />
+        <City>Barcelona</City>
+        <State />
+        <CountryCode>ESP</CountryCode>
+        <CountryName>Spain</CountryName>
+        <PostalCode>08041</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Bergen</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Bergen</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Torgallmenningen 8</Line1>
+        <Line2 />
+        <City>Bergen</City>
+        <State />
+        <CountryCode>NOR</CountryCode>
+        <CountryName>Norway</CountryName>
+        <PostalCode>5014</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Berlin</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Berlin</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Bodestraße 1-3</Line1>
+        <Line2 />
+        <City>Berlin</City>
+        <State />
+        <CountryCode>DEU</CountryCode>
+        <CountryName>Germany</CountryName>
+        <PostalCode>10178</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Brasília</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Brasilia</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>704 Bloco M casa 9 - Asa Sul</Line1>
+        <Line2 />
+        <City>Brasília</City>
+        <State />
+        <CountryCode>BRA</CountryCode>
+        <CountryName>Brazil</CountryName>
+        <PostalCode>70200-050</PostalCode>
+        <RegionCode>DF</RegionCode>
+        <RegionName>Brasília - DF</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Göteborg</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Goteborg</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Berzeliigatan 15</Line1>
+        <Line2 />
+        <City>Göteborg</City>
+        <State />
+        <CountryCode>SWE</CountryCode>
+        <CountryName>Sweden</CountryName>
+        <PostalCode>412 53</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>London</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>London</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Great Russell St</Line1>
+        <Line2 />
+        <City>London</City>
+        <State />
+        <CountryCode>GBR</CountryCode>
+        <CountryName>United Kingdom</CountryName>
+        <PostalCode>WC1B 3DG</PostalCode>
+        <RegionCode>Bloomsbury</RegionCode>
+        <RegionName>Bloomsbury</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Los Angeles</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Los Angeles</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>900 W Exposition Blvd</Line1>
+        <Line2 />
+        <City>Los Angeles</City>
+        <State />
+        <CountryCode>USA</CountryCode>
+        <CountryName>United States</CountryName>
+        <PostalCode>90007</PostalCode>
+        <RegionCode>CA</RegionCode>
+        <RegionName>California</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Madrid</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Madrid</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Calle de Jorge Juan, 62</Line1>
+        <Line2 />
+        <City>Madrid</City>
+        <State />
+        <CountryCode>ESP</CountryCode>
+        <CountryName>Spain</CountryName>
+        <PostalCode>28009</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Manchester</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Manchester</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Sir Matt Busby Way</Line1>
+        <Line2 />
+        <City>Manchester</City>
+        <State />
+        <CountryCode>GBR</CountryCode>
+        <CountryName>United Kingdom</CountryName>
+        <PostalCode>M16 0RA</PostalCode>
+        <RegionCode>Stretford</RegionCode>
+        <RegionName>Stretford</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Mecca</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Mecca</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Al Jamiah</Line1>
+        <Line2 />
+        <City>Mecca</City>
+        <State />
+        <CountryCode>SAU</CountryCode>
+        <CountryName>Saudi Arabia</CountryName>
+        <PostalCode>242243</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Melbourne</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Melbourne</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>122 Albert St</Line1>
+        <Line2 />
+        <City>Port Melbourne</City>
+        <State />
+        <CountryCode>AUS</CountryCode>
+        <CountryName>Australia</CountryName>
+        <PostalCode>3207</PostalCode>
+        <RegionCode>VIC</RegionCode>
+        <RegionName>Victoria</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Montreal</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Montreal</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>1015 Rue du Marché Central</Line1>
+        <Line2 />
+        <City>Saint-Laurent</City>
+        <State />
+        <CountryCode>CAN</CountryCode>
+        <CountryName>Canada</CountryName>
+        <PostalCode>H4N 1J4</PostalCode>
+        <RegionCode>QC</RegionCode>
+        <RegionName>Quebec City</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>München</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Munich</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Barer Str. 40</Line1>
+        <Line2 />
+        <City>München</City>
+        <State />
+        <CountryCode>DEU</CountryCode>
+        <CountryName>Germany</CountryName>
+        <PostalCode>80333</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>New York</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>New York</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>155 Varick St</Line1>
+        <Line2 />
+        <City>New York</City>
+        <State />
+        <CountryCode>USA</CountryCode>
+        <CountryName>United States</CountryName>
+        <PostalCode>10013</PostalCode>
+        <RegionCode>NY</RegionCode>
+        <RegionName>New York</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Osaka</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Osaka</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Bakuromachi, 4</Line1>
+        <Line2 />
+        <City>Ōsaka-shi</City>
+        <State />
+        <CountryCode>JPN</CountryCode>
+        <CountryName>Japan</CountryName>
+        <PostalCode>541-0059</PostalCode>
+        <RegionCode>Chūō-ku, </RegionCode>
+        <RegionName>Chūō-ku, </RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Oslo</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Oslo</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Brenneriveien 9</Line1>
+        <Line2 />
+        <City>Olso</City>
+        <State />
+        <CountryCode>NOR</CountryCode>
+        <CountryName>Norway</CountryName>
+        <PostalCode>0182</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Rio</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Rio</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>728 - Vila São Luís</Line1>
+        <Line2 />
+        <City>Rio de Janeiro</City>
+        <State />
+        <CountryCode>BRA</CountryCode>
+        <CountryName>Brazil</CountryName>
+        <PostalCode>25065-090</PostalCode>
+        <RegionCode>RJ</RegionCode>
+        <RegionName>Duque de Caxias - RJ</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Santiago</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Santiago</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Av. República 475</Line1>
+        <Line2 />
+        <City>Santiago</City>
+        <State />
+        <CountryCode>CHL</CountryCode>
+        <CountryName>Chile</CountryName>
+        <PostalCode />
+        <RegionCode>Región Metropolitana</RegionCode>
+        <RegionName>Región Metropolitana</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Stockholm</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Stockholm</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Hötorget 3</Line1>
+        <Line2 />
+        <City>Stockholm</City>
+        <State />
+        <CountryCode>SWE</CountryCode>
+        <CountryName>Sweden</CountryName>
+        <PostalCode>111 57</PostalCode>
+        <RegionCode />
+        <RegionName />
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Sydney</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Sydney</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>3 Doris St</Line1>
+        <Line2 />
+        <City>North Sydney</City>
+        <State />
+        <CountryCode>AUS</CountryCode>
+        <CountryName>Australia</CountryName>
+        <PostalCode>2060</PostalCode>
+        <RegionCode>NSW</RegionCode>
+        <RegionName>New South Wales</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Tokoyo</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Tokoyo</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Marunouchi, 1</Line1>
+        <Line2 />
+        <City>Tōkyō-to</City>
+        <State />
+        <CountryCode>JPN</CountryCode>
+        <CountryName>Japan</CountryName>
+        <PostalCode>100-0005</PostalCode>
+        <RegionCode>Chiyoda-ku</RegionCode>
+        <RegionName>Chiyoda-ku</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Toronto</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Toronto</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>123 Queen St W</Line1>
+        <Line2 />
+        <City>Toronto</City>
+        <State />
+        <CountryCode>CAN</CountryCode>
+        <CountryName>Canada</CountryName>
+        <PostalCode>M5H 2M9</PostalCode>
+        <RegionCode>ON</RegionCode>
+        <RegionName>Ontario</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Utrecht</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Utrecht</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Agnietenstraat 1</Line1>
+        <Line2 />
+        <City>Utrecht</City>
+        <State />
+        <CountryCode>NLD</CountryCode>
+        <CountryName>Netherlands</CountryName>
+        <PostalCode>3512</PostalCode>
+        <RegionCode>XA</RegionCode>
+        <RegionName>XA</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Viña del Mar</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>False</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>Vina del Mar</Code>
+        <IsFulfillmentCenter>False</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>True</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1>Calle Trece Norte 635</Line1>
+        <Line2 />
+        <City>Viña del Mar</City>
+        <State />
+        <CountryCode>CHL</CountryCode>
+        <CountryName>Chile</CountryName>
+        <PostalCode />
+        <RegionCode>Valparaíso</RegionCode>
+        <RegionName>Región de Valparaíso</RegionName>
+        <DaytimePhoneNumber />
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>sales@company.com</Email>
+      </Warehouse>
+      <Warehouse>
+        <Name>Default Warehouse</Name>
+        <IsActive>True</IsActive>
+        <IsPrimary>True</IsPrimary>
+        <SortOrder>0</SortOrder>
+        <Code>default</Code>
+        <IsFulfillmentCenter>True</IsFulfillmentCenter>
+        <IsPickupLocation>True</IsPickupLocation>
+        <IsDeliveryLocation>False</IsDeliveryLocation>
+        <FirstName>John</FirstName>
+        <LastName>Doe</LastName>
+        <Organization />
+        <Line1> 28401 Rancho California Rd</Line1>
+        <Line2 />
+        <City>Temecula</City>
+        <State>California</State>
+        <CountryCode>US</CountryCode>
+        <CountryName>United States</CountryName>
+        <PostalCode>92590</PostalCode>
+        <RegionCode>CA</RegionCode>
+        <RegionName>California</RegionName>
+        <DaytimePhoneNumber>9558554422</DaytimePhoneNumber>
+        <EveningPhoneNumber />
+        <FaxNumber />
+        <Email>admin@example.com</Email>
+      </Warehouse>
+    </Warehouses>
+    <AssociationTypes>
+      <AssociationType>
+        <TypeId>OPTIONAL</TypeId>
+        <Description>Optional</Description>
+      </AssociationType>
+      <AssociationType>
+        <TypeId>REQUIRED</TypeId>
+        <Description>Required</Description>
+      </AssociationType>
+    </AssociationTypes>
+    <Markets>
+      <Market>
+        <MarketId>AUS</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Australia</MarketName>
+        <MarketDescription>Australia</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>AUD</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>AUD</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>AUS</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>BRA</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Brazil</MarketName>
+        <MarketDescription>Brazil</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>BRL</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>BRL</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>BRA</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>CAN</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Canada</MarketName>
+        <MarketDescription>Canada</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>CAD</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>CAD</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>CAN</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>CHL</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Chile</MarketName>
+        <MarketDescription>Chile</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>CLP</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>CLP</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>CHL</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>DEFAULT</MarketId>
+        <IsEnabled>False</IsEnabled>
+        <MarketName>Default Market</MarketName>
+        <MarketDescription>Default Market</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>USD</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>USD</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>USA</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>DEU</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Germany</MarketName>
+        <MarketDescription>Germany</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>EUR</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>EUR</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>DEU</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>ESP</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Spain</MarketName>
+        <MarketDescription>Spain</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>EUR</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>EUR</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>ESP</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>FR</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>France</MarketName>
+        <MarketDescription>France</MarketDescription>
+        <DefaultLanguage>fr</DefaultLanguage>
+        <DefaultCurrency>EUR</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>EUR</Currency>
+        </Currencies>
+        <Languages>
+          <Language>fr</Language>
+        </Languages>
+        <Countries>
+          <Country>FRA</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>JPN</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Japan</MarketName>
+        <MarketDescription>Japan</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>JPY</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>JPY</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>JPN</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>NLD</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Netherlands</MarketName>
+        <MarketDescription>Netherlands</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>EUR</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>EUR</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>NLD</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>NOR</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Norway</MarketName>
+        <MarketDescription>Norway</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>NOK</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>NOK</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>NOR</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>SAU</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Saudi Arabia</MarketName>
+        <MarketDescription>Saudi Arabia</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>SAR</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>SAR</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>SAU</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>SWE</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>Sweden</MarketName>
+        <MarketDescription>Sweden</MarketDescription>
+        <DefaultLanguage>sv</DefaultLanguage>
+        <DefaultCurrency>SEK</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>SEK</Currency>
+          <Currency>USD</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+          <Language>sv</Language>
+        </Languages>
+        <Countries>
+          <Country>SWE</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>UK</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>United Kingdom</MarketName>
+        <MarketDescription>United Kingdom</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>GBP</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>GBP</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>UK</Country>
+        </Countries>
+      </Market>
+      <Market>
+        <MarketId>US</MarketId>
+        <IsEnabled>True</IsEnabled>
+        <MarketName>USA</MarketName>
+        <MarketDescription>USA</MarketDescription>
+        <DefaultLanguage>en</DefaultLanguage>
+        <DefaultCurrency>USD</DefaultCurrency>
+        <PricesIncludeTax>False</PricesIncludeTax>
+        <Currencies>
+          <Currency>USD</Currency>
+        </Currencies>
+        <Languages>
+          <Language>en</Language>
+        </Languages>
+        <Countries>
+          <Country>USA</Country>
+        </Countries>
+      </Market>
+    </Markets>
+  </Dictionaries>
+  <Catalog name="Fashion" lastmodified="2018-06-22 06:33:53Z" startDate="2015-04-21 22:00:00Z" endDate="2035-04-21 22:00:00Z" defaultCurrency="USD" weightBase="lbs" lengthBase="in" defaultLanguage="en" sortOrder="0" isActive="True" metaClassId="1">
+    <Guid>8c905f8d-4ac5-4455-81a4-ce48232483d5</Guid>
+    <Languages>
+      <Language>
+        <LanguageCode>en</LanguageCode>
+        <UriSegment>fashion</UriSegment>
+      </Language>
+      <Language>
+        <LanguageCode>fr</LanguageCode>
+        <UriSegment>fashion</UriSegment>
+      </Language>
+      <Language>
+        <LanguageCode>sv</LanguageCode>
+        <UriSegment>fashion</UriSegment>
+      </Language>
+    </Languages>
+    <Nodes totalCount="2">
+<!--Flinn-->
+	<Node>
+        <Name>Products</Name>
+        <StartDate>2015-07-08 01:08:37Z</StartDate>
+        <EndDate>2035-04-21 22:00:00Z</EndDate>
+        <IsActive>True</IsActive>
+        <SortOrder>0</SortOrder>
+        <DisplayTemplate>default</DisplayTemplate>
+        <Code>products_1</Code>
+        <Guid>d077bc99-3316-4c98-b047-00fc4d816927</Guid>
+        <MetaData>
+          <MetaClass>
+            <Name>GenericNode</Name>
+          </MetaClass>
+          <MetaFields>
+            <MetaField>
+              <Name>Css</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>CssFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>DefaultTemplate</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Description</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>DisplayName</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="Products" />
+              <Data language="fr" value="Products" />
+              <Data language="sv" value="Products" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_IsPublished</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="True" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StartPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2015-04-22 11:43:37Z" />
+              <Data language="fr" value="2015-04-22 11:43:37Z" />
+              <Data language="sv" value="2015-04-22 11:43:37Z" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StopPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2035-04-21 22:00:00Z" />
+              <Data language="fr" value="2035-04-21 22:00:00Z" />
+              <Data language="sv" value="2035-04-21 22:00:00Z" />
+            </MetaField>
+            <MetaField>
+              <Name>FeaturedProducts</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteFooter</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteHeader</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>LongName</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>PartialPageSize</Name>
+              <Type>Integer</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ScriptFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Scripts</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ShowRecommendations</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Teaser</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>TopContentArea</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+          </MetaFields>
+        </MetaData>
+        <ParentNode/>
+        <SeoInfo>
+          <Seo>
+            <LanguageCode>en</LanguageCode>
+            <Uri>Products-en.aspx</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>products</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>fr</LanguageCode>
+            <Uri>Products-en.aspx</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>products</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>sv</LanguageCode>
+            <Uri>Products-sv.aspx</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>products</UriSegment>
+          </Seo>
+        </SeoInfo>
+      </Node>
+	<Node>
+        <Name>Chemical</Name>
+        <StartDate>2015-04-22 11:43:37Z</StartDate>
+        <EndDate>2035-04-21 22:00:00Z</EndDate>
+        <IsActive>True</IsActive>
+        <SortOrder>0</SortOrder>
+        <DisplayTemplate>default</DisplayTemplate>
+        <Code>chemical_1</Code>
+        <Guid>55565d89-0b82-40a6-9fb9-e5bb28df7823</Guid>
+        <MetaData>
+          <MetaClass>
+            <Name>GenericNode</Name>
+          </MetaClass>
+          <MetaFields>
+            <MetaField>
+              <Name>Css</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>CssFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>DefaultTemplate</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Description</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>DisplayName</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="Chemical" />
+              <Data language="fr" value="Chemical" />
+              <Data language="sv" value="Chemical" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_IsPublished</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="True" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StartPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2015-04-22 11:43:37Z" />
+              <Data language="fr" value="2015-04-22 11:43:37Z" />
+              <Data language="sv" value="2015-04-22 11:43:37Z" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StopPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2035-04-21 22:00:00Z" />
+              <Data language="fr" value="2035-04-21 22:00:00Z" />
+              <Data language="sv" value="2035-04-21 22:00:00Z" />
+            </MetaField>
+            <MetaField>
+              <Name>FeaturedProducts</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteFooter</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteHeader</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>LongName</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>PartialPageSize</Name>
+              <Type>Integer</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ScriptFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Scripts</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ShowRecommendations</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Teaser</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>TopContentArea</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+          </MetaFields>
+        </MetaData>
+        <ParentNode>products_1</ParentNode>
+        <SeoInfo>
+          <Seo>
+            <LanguageCode>en</LanguageCode>
+            <Uri>Products-Chemical-en.aspx</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>products-chemical</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>fr</LanguageCode>
+            <Uri>Products-Chemical-fr.aspx</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>products-chemical</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>sv</LanguageCode>
+            <Uri>Products-Chemical-sv.aspx</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>products-chemical</UriSegment>
+          </Seo>
+        </SeoInfo>
+      </Node>
+	</Nodes>
+    <Entries totalCount="2">
+	  <!--Flinn-->
+	  <Entry>
+        <Name>Indigo Carmine</Name>
+        <StartDate>2015-07-08 01:46:13Z</StartDate>
+        <EndDate>2035-04-22 11:46:13Z</EndDate>
+        <IsActive>True</IsActive>
+        <DisplayTemplate>default</DisplayTemplate>
+        <Code>P-10212</Code>
+        <EntryType>Product</EntryType>
+        <Guid>d70d544a-d1c8-4443-b58a-32b4da48b8d8</Guid>
+        <MetaData>
+          <MetaClass>
+            <Name>GenericProduct</Name>
+          </MetaClass>
+          <MetaFields>
+            <MetaField>
+              <Name>_ExcludedCatalogEntryMarkets</Name>
+              <Type>EnumMultiValue</Type>
+              <Data language="en"></Data>
+            </MetaField>
+            <MetaField>
+              <Name>AssociationsTitle</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Boost</Name>
+              <Type>Integer</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Brand</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Bury</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ContentArea</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Css</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>CssFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Department</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Description</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="Slightly toxic by ingestion; body tissue irritant. LD50 2000 mg/kg." />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>DisplayName</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="Indigo Carmine" />
+              <Data language="fr" value="Indigo Carmine" />
+              <Data language="sv" value="Indigo Carmine" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_IsPublished</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="True" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StartPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2015-04-22 11:46:00Z" />
+              <Data language="fr" value="2015-04-22 11:46:00Z" />
+              <Data language="sv" value="2015-04-22 11:46:00Z" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StopPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2035-04-22 11:46:00Z" />
+              <Data language="fr" value="2035-04-22 11:46:00Z" />
+              <Data language="sv" value="2035-04-22 11:46:00Z" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteFooter</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteHeader</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>LegalDisclaimer</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>LongDescription</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="Slightly toxic by ingestion; body tissue irritant. LD50 2000 mg/kg." />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Manufacturer</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ManufacturerPartsWarrantyDescription</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Model</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ModelYear</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>NewArrival</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>OnSale</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ProductGroup</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ProductStatus</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ProductTeaser</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="Slightly toxic by ingestion; body tissue irritant. LD50 2000 mg/kg." />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ProductTypeName</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ProductTypeSubcategory</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ScriptFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Scripts</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ShowRecommendations</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Sizing</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Warranty</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+          </MetaFields>
+        </MetaData>
+        <WarehouseInventories />
+        <Prices />
+        <SeoInfo>
+          <Seo>
+            <LanguageCode>en</LanguageCode>
+            <Uri>P-10212</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>P-10212</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>fr</LanguageCode>
+            <Uri>P-10212</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>indigo-carmine-10g-1</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>sv</LanguageCode>
+            <Uri>P-10212</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>p-10212</UriSegment>
+          </Seo>
+        </SeoInfo>
+      </Entry>
+		<Entry>
+        <Name>Indigo Carmine, 10 g</Name>
+        <StartDate>2015-04-22 11:46:13Z</StartDate>
+        <EndDate>2035-04-22 11:46:13Z</EndDate>
+        <IsActive>True</IsActive>
+        <DisplayTemplate>default</DisplayTemplate>
+        <Code>10022</Code>
+        <EntryType>Variation</EntryType>
+        <Guid>df2659a9-29b8-4595-91e5-5621e6dadaca</Guid>
+        <MetaData>
+          <MetaClass>
+            <Name>GenericVariant</Name>
+          </MetaClass>
+          <MetaFields>
+            <MetaField>
+              <Name>_ExcludedCatalogEntryMarkets</Name>
+              <Type>EnumMultiValue</Type>
+              <Data language="en"></Data>
+            </MetaField>
+            <MetaField>
+              <Name>AssociationsTitle</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Color</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="PURPLE" />
+              <Data language="fr" value="PURPLE" />
+              <Data language="sv" value="PURPLE" />
+            </MetaField>
+            <MetaField>
+              <Name>ContentArea</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Css</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>CssFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Description</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>DisplayName</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="Indigo Carmine, 10 g" />
+              <Data language="fr" value="Indigo Carmine, 10 g" />
+              <Data language="sv" value="Indigo Carmine, 10 g" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_IsPublished</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="True" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StartPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2015-04-22 11:46:13Z" />
+              <Data language="fr" value="2015-04-22 11:46:13Z" />
+              <Data language="sv" value="2015-04-22 11:46:13Z" />
+            </MetaField>
+            <MetaField>
+              <Name>Epi_StopPublish</Name>
+              <Type>DateTime</Type>
+              <Data language="en" value="2035-04-22 11:46:13Z" />
+              <Data language="fr" value="2035-04-22 11:46:13Z" />
+              <Data language="sv" value="2035-04-22 11:46:13Z" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteFooter</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>HideSiteHeader</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="" />
+              <Data language="fr" value="" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Mpn</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>PackageQuantity</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>PartNumber</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>RegionCode</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ScriptFiles</Name>
+              <Type>LongHtmlString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Scripts</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>ShowRecommendations</Name>
+              <Type>Boolean</Type>
+              <Data language="en" value="True" />
+              <Data language="fr" value="True" />
+              <Data language="sv" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Size</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="6.5" />
+            </MetaField>
+            <MetaField>
+              <Name>Sku</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>SubscriptionLength</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>Upc</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>VirtualProductMode</Name>
+              <Type>LongString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+            <MetaField>
+              <Name>VirtualProductRole</Name>
+              <Type>ShortString</Type>
+              <Data language="en" value="" />
+            </MetaField>
+          </MetaFields>
+        </MetaData>
+        <VariationInfo>
+          <Variation>
+            <MaxQuantity>100000.000000000</MaxQuantity>
+            <MinQuantity>1.000000000</MinQuantity>
+            <TaxCategoryName>General Sales</TaxCategoryName>
+            <TrackInventory>True</TrackInventory>
+            <Weight>0.055</Weight>
+            <Length>0</Length>
+            <Height>0</Height>
+            <Width>0</Width>
+          </Variation>
+        </VariationInfo>
+        <WarehouseInventories>
+          <WarehouseInventory>
+            <WarehouseCode>Abha</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Amsterdam</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Barcelona</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Bergen</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Berlin</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Brasilia</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Goteborg</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>London</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Los Angeles</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Madrid</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Manchester</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Mecca</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Melbourne</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Montreal</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Munich</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>New York</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Osaka</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Oslo</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Rio</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Santiago</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Stockholm</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Sydney</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Tokoyo</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Toronto</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Utrecht</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>Vina del Mar</WarehouseCode>
+            <AllowBackorder>True</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>2017-07-07 22:25:52Z</BackorderAvailabilityDate>
+            <BackorderQuantity>25</BackorderQuantity>
+            <InStockQuantity>520</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2017-07-07 22:25:52Z</PreorderAvailabilityDate>
+            <PreorderQuantity>20</PreorderQuantity>
+            <ReorderMinQuantity>15</ReorderMinQuantity>
+            <ReservedQuantity>20</ReservedQuantity>
+          </WarehouseInventory>
+          <WarehouseInventory>
+            <WarehouseCode>default</WarehouseCode>
+            <AllowBackorder>False</AllowBackorder>
+            <AllowPreorder>True</AllowPreorder>
+            <BackorderAvailabilityDate>9999-12-31 23:59:59Z</BackorderAvailabilityDate>
+            <BackorderQuantity>0</BackorderQuantity>
+            <InStockQuantity>148</InStockQuantity>
+            <InventoryStatus>Enabled</InventoryStatus>
+            <PreorderAvailabilityDate>2015-04-22 11:46:13Z</PreorderAvailabilityDate>
+            <PreorderQuantity>0</PreorderQuantity>
+            <ReorderMinQuantity>10</ReorderMinQuantity>
+            <ReservedQuantity>10</ReservedQuantity>
+          </WarehouseInventory>
+        </WarehouseInventories>
+        <Prices>
+          <Price>
+            <MarketId>AUS</MarketId>
+            <CurrencyCode>AUD</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>40.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>BRA</MarketId>
+            <CurrencyCode>BRL</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>96.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>CAN</MarketId>
+            <CurrencyCode>CAD</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>720.000000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>CHL</MarketId>
+            <CurrencyCode>CLP</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>19517.000000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>DEU</MarketId>
+            <CurrencyCode>EUR</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>29.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>ESP</MarketId>
+            <CurrencyCode>EUR</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>29.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>FR</MarketId>
+            <CurrencyCode>EUR</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 18:48:00Z</ValidFrom>
+            <ValidUntil>2035-04-22 18:48:00Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>29.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>JPN</MarketId>
+            <CurrencyCode>JPY</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>3804.000000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>NLD</MarketId>
+            <CurrencyCode>EUR</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>29.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>NOR</MarketId>
+            <CurrencyCode>NOK</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>248.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>SAU</MarketId>
+            <CurrencyCode>SAR</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>43.500000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>SWE</MarketId>
+            <CurrencyCode>SEK</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>720.000000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>SWE</MarketId>
+            <CurrencyCode>USD</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>720.000000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>UK</MarketId>
+            <CurrencyCode>GBP</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>720.000000000</UnitPrice>
+          </Price>
+          <Price>
+            <MarketId>US</MarketId>
+            <CurrencyCode>USD</CurrencyCode>
+            <PriceTypeId>0</PriceTypeId>
+            <PriceCode />
+            <ValidFrom>2015-04-22 11:46:13Z</ValidFrom>
+            <ValidUntil>2035-04-22 11:46:13Z</ValidUntil>
+            <MinQuantity>0.000000000</MinQuantity>
+            <UnitPrice>720.000000000</UnitPrice>
+          </Price>
+        </Prices>
+        <SeoInfo>
+          <Seo>
+            <LanguageCode>sv</LanguageCode>
+            <Uri>SKU-10022</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>sku-10022</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>en</LanguageCode>
+            <Uri>SKU-10022</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>sku-10022</UriSegment>
+          </Seo>
+          <Seo>
+            <LanguageCode>fr</LanguageCode>
+            <Uri>indigo-carmine-10g-fr</Uri>
+            <Title />
+            <Description />
+            <Keywords />
+            <UriSegment>sku-10022</UriSegment>
+          </Seo>
+        </SeoInfo>
+      </Entry>	  	
+	</Entries>
+    
+	<Relations>     
+	  <!--Flinn-->
+	  <NodeEntryRelation>
+        <EntryCode>P-10212</EntryCode>
+        <NodeCode>chemical_1</NodeCode>
+        <SortOrder>1201</SortOrder>
+        <IsPrimary>True</IsPrimary>
+      </NodeEntryRelation>
+	  <NodeEntryRelation>
+        <EntryCode>sku-10022</EntryCode>
+        <NodeCode>chemical_1</NodeCode>
+        <SortOrder>1201</SortOrder>
+        <IsPrimary>True</IsPrimary>
+      </NodeEntryRelation>	  
+	   <EntryRelation>
+        <ParentEntryCode>P-10212</ParentEntryCode>
+        <ChildEntryCode>sku-10022</ChildEntryCode>
+        <RelationType>ProductVariation</RelationType>
+        <Quantity>1.000000000</Quantity>
+        <GroupName>default</GroupName>
+        <SortOrder>0</SortOrder>
+      </EntryRelation>	      
+    </Relations>
+    <Associations />
+	<CatalogItemAssetCollection>
+	<CatalogItemAssets>
+	<!--Flinn-->
+		<CatalogItemAsset>
+			<CatalogItemType>Entry</CatalogItemType>
+			<CatalogItemCode>P-10212</CatalogItemCode>
+			<AssetPath>Catalogs/Flinn/Product/Chemical</AssetPath>
+			<AssetName>i0022_e.jpg</AssetName>
+			<AssetType>mosey.cms.media.imagemediadata</AssetType>
+			<MimeType>image/jpeg</MimeType>
+			<GroupName>default</GroupName>
+			<SortOrder>0</SortOrder>
+		</CatalogItemAsset>
+		<CatalogItemAsset>
+			<CatalogItemType>Entry</CatalogItemType>
+			<CatalogItemCode>sku-10022</CatalogItemCode>
+			<AssetPath>Catalogs/Flinn/Product/Chemical</AssetPath>
+			<AssetName>i0022_e.jpg</AssetName>
+			<AssetType>mosey.cms.media.imagemediadata</AssetType>
+			<MimeType>image/jpeg</MimeType>
+			<GroupName>default</GroupName>
+			<SortOrder>0</SortOrder>
+		</CatalogItemAsset>		
+	</CatalogItemAssets>
+	<TotalCount>262</TotalCount>
+</CatalogItemAssetCollection>undefined</Catalog>
+</Catalogs>
