@@ -60,6 +60,12 @@ namespace Foundation
                 Name = "EcfSqlConnection",
                 ConnectionString = _configuration.GetConnectionString("EcfSqlConnection")
             }));
+
+            services.AddAzureBlobProvider(options => 
+            { 
+                options.ConnectionString = _configuration["AzureBlobs:ConnectionString"];
+                options.ContainerName = "mysitemedia"; 
+            });
             services.AddCmsAspNetIdentity<SiteUser>(o =>
             {
                 if (string.IsNullOrEmpty(o.ConnectionStringOptions?.ConnectionString))
